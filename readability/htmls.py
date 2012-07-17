@@ -57,11 +57,12 @@ def add_match(collection, text, orig):
 
 def shorten_title(doc):
     
+    title = doc.find('.//title')
+    
     # This seems to always cause the script to throw TypeError or just return "" as the title
     # Removing it seems to make the function work again. -nhnifong
     # I don't know what it was here for
     #
-    #title = doc.find('.//title')
     #if title is None or len(title.text) == 0:
     #    return ''
 
