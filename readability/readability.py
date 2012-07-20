@@ -280,8 +280,12 @@ class Document:
                 ordered.append(grand_parent_node)
 
             content_score = 1
-            content_score += len(inner_text.split(','))
+            #content_score += len(inner_text.split(',')) # A stupid metric IMHO -nhnifong
             content_score += min((inner_text_len / 100), 3)
+            # a better heuristic might be that the quot char (") is the third most common char
+            # in typical html, representing about 4.5% of chars. In english, its only 0.8%
+            content_score -= len(inner_text.split('"'))*0.1
+            
             #if elem not in candidates:
             #    candidates[elem] = self.score_node(elem)
 
